@@ -1,0 +1,5 @@
+rootProject.name = 'kuenhe-nagel-task'
+
+include 'ui-tests'
+include 'api-tests'
+
