@@ -65,7 +65,7 @@ public class UserBookCollectionTest extends BaseTest {
         cleanUserBookCollectionViaApi();
     }
 
-    private void addBookToUsersCollection(String title, Users user){
+    private void addBookToUsersCollection(String title, Users user) {
         //Login as a user
         loginService.login(user);
 
@@ -77,7 +77,7 @@ public class UserBookCollectionTest extends BaseTest {
         profileService = baseService.goToPage(BOOK_STORE_APP.getName(), PROFILE.getName(), ProfileService.class);
     }
 
-    private void cleanUserBookCollectionViaApi(){
+    private void cleanUserBookCollectionViaApi() {
         AuthUserService authUserService = new AuthUserService();
         LoginRequest loginRequest = LoginRequestMapper.toLoginRequest(User.USER);
 

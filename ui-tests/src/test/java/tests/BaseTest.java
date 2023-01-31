@@ -23,8 +23,8 @@ public class BaseTest {
 
     @BeforeEach
     public void init() {
-        baseService = new BaseService();
-        loginService = new LoginService();
+        baseService = new BaseService(driver);
+        loginService = new LoginService(driver);
     }
 
     @AfterAll

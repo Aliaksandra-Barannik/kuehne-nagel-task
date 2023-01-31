@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.Page;
@@ -14,6 +15,10 @@ public class NavigationMenu extends Page {
 
     @FindBy(xpath = "//div[@class='element-group']")
     List<WebElement> groups;
+
+    public NavigationMenu(WebDriver driver) {
+        super(driver);
+    }
 
     public void openTab(String groupTab, String subGroupTab) {
         for (WebElement group : groups) {

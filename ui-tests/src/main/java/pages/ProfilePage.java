@@ -1,6 +1,7 @@
 package pages;
 
 import driver.Driver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,6 +12,10 @@ public class ProfilePage extends Page {
 
     @FindBy(id = "searchBox")
     private WebElement searchInput;
+
+    public ProfilePage(WebDriver driver) {
+        super(driver);
+    }
 
     public void searchBookByText(String text){
         Driver.waitForElementVisibility(searchInput);

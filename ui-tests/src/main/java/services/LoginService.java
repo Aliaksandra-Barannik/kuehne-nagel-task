@@ -2,15 +2,16 @@ package services;
 
 import enums.Users;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 
 public class LoginService extends BaseService {
 
     private LoginPage loginPage;
 
-    public LoginService() {
-        super();
-        loginPage = new LoginPage();
+    public LoginService(WebDriver webDriver) {
+        super(webDriver);
+        loginPage = new LoginPage(driver);
     }
 
     @Step("Login as an user")

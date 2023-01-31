@@ -2,7 +2,7 @@ package services;
 
 import dev.failsafe.internal.util.Assert;
 import io.qameta.allure.Step;
-import org.apache.commons.lang3.reflect.ConstructorUtils;
+import org.openqa.selenium.WebDriver;
 import pages.Page;
 import pages.components.NavigationMenu;
 
@@ -10,10 +10,12 @@ public class BaseService {
 
     protected NavigationMenu navigationMenu;
     protected Page basePage;
+    protected WebDriver driver;
 
-    public BaseService() {
-        basePage = new Page();
-        navigationMenu = new NavigationMenu();
+    public BaseService(WebDriver webDriver) {
+        this.driver = webDriver;
+        basePage = new Page(driver);
+        navigationMenu = new NavigationMenu(driver);
     }
 
     @Step("Navigate to {groupTab} / {subGroupTab}")
@@ -21,7 +23,7 @@ public class BaseService {
         navigationMenu.openTab(groupTab, subGroupTab);
         T service;
         try {
-            service = ConstructorUtils.invokeConstructor(clazz);
+            service = clazz.getConstructor(WebDriver.class).newInstance(driver);
         } catch (Exception e) {
             throw new RuntimeException(
                     String.format("Could not create '%s' service!", clazz.getSimpleName()));
@@ -39,6 +41,6 @@ public class BaseService {
     @Step("Log out")
     public LoginService logout() {
         basePage.clickLogoutButton();
-        return new LoginService();
+        return new LoginService(driver);
     }
 }

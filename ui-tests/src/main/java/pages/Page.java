@@ -13,25 +13,25 @@ public class Page {
 
     protected WebDriver driver;
 
-    public Page() {
-        driver = Driver.getWebDriverInstance();
-        PageFactory.initElements(driver, this);
+    public Page(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(Driver.getWebDriverInstance(), this);
     }
 
-    public boolean isLogoutButtonVisible(){
-       return Driver.waitForElementVisibility(logoutButton);
+    public boolean isLogoutButtonVisible() {
+        return Driver.waitForElementVisibility(logoutButton);
     }
 
     public void clickLogoutButton() {
         click(logoutButton);
     }
 
-    protected void setText(WebElement element, String text){
+    protected void setText(WebElement element, String text) {
         element.clear();
         element.sendKeys(text);
     }
 
-    protected void click(WebElement element){
+    protected void click(WebElement element) {
         Driver.scrollToElement(element);
         element.click();
     }

@@ -24,12 +24,6 @@ allprojects {
     }
 }
 
-project("ui-tests"){
-    dependencies {
-        implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.7.2'
-    }
-}
-
 
 
 

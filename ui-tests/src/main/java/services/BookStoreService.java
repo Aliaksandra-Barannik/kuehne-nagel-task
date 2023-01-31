@@ -1,6 +1,7 @@
 package services;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import pages.BookStorePage;
 import services.components.TableService;
 
@@ -8,9 +9,9 @@ public class BookStoreService extends BaseService {
 
     private BookStorePage bookStorePage;
 
-    public BookStoreService() {
-        super();
-        bookStorePage = new BookStorePage();
+    public BookStoreService(WebDriver webDriver) {
+        super(webDriver);
+        bookStorePage = new BookStorePage(driver);
     }
 
     @Step("Search a book by title '{text}'")
@@ -19,6 +20,6 @@ public class BookStoreService extends BaseService {
     }
 
     public TableService table() {
-        return new TableService();
+        return new TableService(driver);
     }
 }

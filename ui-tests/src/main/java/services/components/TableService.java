@@ -3,6 +3,7 @@ package services.components;
 import io.qameta.allure.Step;
 import java.util.List;
 import objects.Book;
+import org.openqa.selenium.WebDriver;
 import pages.components.Table;
 import services.BaseService;
 import services.BookService;
@@ -11,15 +12,15 @@ public class TableService extends BaseService {
 
     protected Table table;
 
-    public TableService() {
-        super();
-        table = new Table();
+    public TableService(WebDriver webDriver) {
+        super(webDriver);
+        table = new Table(driver);
     }
 
     @Step("Open a book '{title}'")
     public BookService openItem(String title) {
         table.clickTitleLink(title);
-        return new BookService();
+        return new BookService(driver);
     }
 
     @Step("Find books which contain title: {title}")
