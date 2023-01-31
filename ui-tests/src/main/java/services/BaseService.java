@@ -9,7 +9,7 @@ import pages.components.NavigationMenu;
 public class BaseService {
 
     protected NavigationMenu navigationMenu;
-    private Page basePage;
+    protected Page basePage;
 
     public BaseService() {
         basePage = new Page();

@@ -18,6 +18,10 @@ public class Page {
         PageFactory.initElements(driver, this);
     }
 
+    public boolean isLogoutButtonVisible(){
+       return Driver.waitForElementVisibility(logoutButton);
+    }
+
     public void clickLogoutButton() {
         click(logoutButton);
     }

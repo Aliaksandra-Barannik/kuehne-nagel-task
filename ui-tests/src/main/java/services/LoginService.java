@@ -15,6 +15,15 @@ public class LoginService extends BaseService {
 
     @Step("Login as an user")
     public void login(Users user) {
-        loginPage.login(user);
+        loginPage.setUserName(user.getName());
+        loginPage.setPassword(user.getPassword());
+
+        for (int i = 0; i < 2; i++) {
+            loginPage.clickLoginButton();
+
+            if (basePage.isLogoutButtonVisible()) {
+                break;
+            }
+        }
     }
 }

@@ -1,7 +1,5 @@
 package pages;
 
-import driver.Driver;
-import enums.Users;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -16,16 +14,15 @@ public class LoginPage extends Page {
     @FindBy(id = "login")
     private WebElement loginButton;
 
-    public void login(Users user) {
-        setText(userName, user.getName());
-        setText(password, user.getPassword());
+    public void setUserName(String text){
+        setText(userName, text);
+    }
 
-        for (int i = 0; i < 2; i++) {
-            loginButton.click();
+    public void setPassword(String text){
+        setText(password, text);
+    }
 
-            if (Driver.waitForElementVisibility(logoutButton)) {
-                break;
-            }
-        }
+    public void clickLoginButton(){
+        loginButton.click();
     }
 }
