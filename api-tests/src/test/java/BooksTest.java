@@ -1,4 +1,3 @@
-import dto.TokenDto;
 import dto.UserDto;
 import dto.requests.AddBooksRequest;
 import dto.requests.LoginRequest;
@@ -42,7 +41,7 @@ public class BooksTest extends BaseTest {
 
         //Verify if the user's collection contains the book
         actualUser = accountApiService.getUser(userId);
-        Assertions.assertEquals(1, actualUser.getBooks().size(), "User has books in the collection");
+        Assertions.assertEquals(1, actualUser.getBooks().size(), "User hasn't books in the collection");
         Assertions.assertEquals(expectedUser, actualUser, "Objects are different. Actual: " + actualUser.toString()
                 + " , expected: " + expectedUser.toString());
     }
